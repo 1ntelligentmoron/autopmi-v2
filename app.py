@@ -54,19 +54,20 @@ def lesson(t=950, dow=2):  # Testing
 def subj(lesson_ident: tuple):
     dow = lesson_ident[0]
     slot = lesson_ident[1]
+    cls = PMI_ALL()['CLASS(V/I)'].upper()
     subjs = (
         ('', '', 'HRT', 'HRT', '',),
-        ('ENG', 'C_SL', 'TOK', 'ENG', 'ASSEMBLY',),
+        ('PE' if cls == 'I' else 'ENG', 'C_SL', 'CHI' if cls == 'I' else 'TOK', 'ENG', 'ASSEMBLY',),
         ('CHI', 'C_SL', 'B_SL', 'ENG', 'C_SL',),
         ('CHI', 'MATHS_SL/HL', 'B_SL', 'B_SL', 'C_SL',),
         # Recess
         ('TOK', 'CHI', 'B_SL', 'B_SL', 'C_SL',),
-        ('TOK', 'CHI', 'CHI', 'MATHS_SL/HL', 'PE',),
+        ('TOK', 'CHI', 'TOK' if cls == 'I' else 'CHI', 'MATHS_SL/HL', 'ENG' if cls == 'I' else 'PE',),
         # Lunch
-        ('MATHS_SL/HL', 'A_SL', 'ENG', 'A_SL', 'ENG',),
+        ('MATHS_SL/HL', 'A_SL', 'ENG', 'A_SL', 'PE' if cls == 'I' else 'ENG',),
         ('MATHS_SL/HL', 'A_SL', 'ENG', 'A_SL', 'MATHS_SL/HL',),
         # Break
-        ('PE', 'ENG', 'REFLE', 'A_SL', 'CHI',),
+        ('ENG' if cls == 'I' else 'PE', 'ENG', 'REFLE', 'A_SL', 'CHI',),
         ('A_HL', 'B_HL', 'MATHS_HL', 'C_HL', 'CHI',),
         ('A_HL', 'B_HL', 'MATHS_HL', 'C_HL', 'EE',),
     )
